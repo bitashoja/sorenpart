@@ -1,0 +1,5 @@
+[33m2bf3f17[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Fix Vercel deployment issues and update configuration
+[33mcc259fa[m Add vercel.json for SPA routing
+[33m8e3f1c0[m Add homepage to fix Vercel deploy
+[33mb2aaf66[m change header color
+[33mb7756c8[m add project files
