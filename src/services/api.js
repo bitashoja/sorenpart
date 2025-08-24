@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:3000/api'; // یا آدرس سرور شما
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://your-backend-url.com/api'  // آدرس سرور production شما
+  : 'http://localhost:3000/api'; // آدرس localhost برای development
 
 // Helper function for API calls
 const apiCall = async (endpoint, options = {}) => {

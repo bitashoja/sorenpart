@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# سورنا پارت - فروشگاه قطعات خودرو
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+این پروژه یک فروشگاه آنلاین قطعات خودرو است که با React و Tailwind CSS ساخته شده است.
 
-## Available Scripts
+## ویژگی‌ها
 
-In the project directory, you can run:
+- نمایش محصولات با grid responsive
+- جستجوی محصولات
+- فیلتر بر اساس دسته‌بندی
+- سبد خرید
+- احراز هویت کاربر
+- مدیریت سفارشات
 
-### `npm start`
+## تکنولوژی‌های استفاده شده
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 18
+- Tailwind CSS
+- Context API برای state management
+- Fetch API برای ارتباط با backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## نصب و اجرا
 
-### `npm test`
+### پیش‌نیازها
+- Node.js (نسخه 14 یا بالاتر)
+- npm یا yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### نصب dependencies
+```bash
+npm install
+```
 
-### `npm run build`
+### اجرا در محیط development
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ساخت نسخه production
+```bash
+npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## تنظیمات API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+برای استفاده از API، آدرس سرور backend را در فایل `src/services/api.js` تنظیم کنید:
 
-### `npm run eject`
+```javascript
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://your-backend-url.com/api'  // آدرس سرور production
+  : 'http://localhost:3000/api';        // آدرس localhost
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## استقرار روی Vercel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. پروژه را به GitHub push کنید
+2. در Vercel، پروژه جدید ایجاد کنید
+3. از GitHub import کنید
+4. تنظیمات build:
+   - Build Command: `npm run build`
+   - Output Directory: `build`
+   - Install Command: `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ساختار پروژه
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── components/          # کامپوننت‌های React
+│   ├── Header.jsx      # هدر سایت
+│   ├── Footer.jsx      # فوتر سایت
+│   ├── Category.jsx    # نمایش دسته‌بندی‌ها
+│   └── Product.jsx     # نمایش محصولات
+├── context/            # Context API
+│   └── AppContext.js   # مدیریت state های اصلی
+├── services/           # سرویس‌های API
+│   └── api.js         # توابع ارتباط با backend
+└── App.js             # کامپوننت اصلی
+```
 
-## Learn More
+## نکات مهم
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- مطمئن شوید که سرور backend شما در حال اجرا است
+- در production، آدرس API را به درستی تنظیم کنید
+- برای routing بهتر، از React Router استفاده کنید
+- فایل‌های محیطی (.env) را در .gitignore قرار دهید
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## پشتیبانی
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+برای سوالات و مشکلات، لطفاً issue در GitHub ایجاد کنید.
