@@ -1,11 +1,43 @@
 import React from "react";
+export default function Category({ categories , categoriesError, loadingCategories }) {
+  const getCategoryImage = (relativePath) =>
+    relativePath
+      ? `https://api-norapart.liara.run${relativePath}`
+      : "../images/blocking.jpeg";
 
-export default function Category() {
   return (
    <div className="mt-8 px-4">
      <div>
       <h1 className="text-4xl text-center font-bold text-gray-800 mb-8">دسته بندی محصولات</h1>
-      <div className="flex justify-center items-center gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-center items-center gap-6 max-w-7xl mx-auto">
+        {loadingCategories && (
+          <p className="text-gray-500 text-center w-full">در حال بارگذاری...</p>
+        )}
+        {!loadingCategories && categoriesError && (
+          <p className="text-red-500 text-center w-full">{categoriesError}</p>
+        )}
+        {!loadingCategories &&
+          !categoriesError &&
+          categories?.length > 0 && categories.map((category) => (
+            <div
+              key={category.id}
+              className="w-[280px] h-[280px] border border-gray-200 rounded-2xl bg-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer group"
+            >
+              <img
+                src={getCategoryImage(category.image_url)}
+                alt={category.name}
+                className="w-[120px] h-[120px] object-cover rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300"
+              />
+              <h3 className="text-lg font-semibold text-gray-700 text-center px-2">
+                {category.name}
+              </h3>
+            </div>
+          ))}
+        {!loadingCategories && !categoriesError && categories.length === 0 && (
+          <p className="text-gray-500 text-center w-full">دسته‌بندی‌ای یافت نشد.</p>
+        )}
+      </div>
+      <div className="flex justify-center items-center gap-6 max-w-7xl mx-auto mt-8">
         <div className="w-[280px] h-[280px] border border-gray-200 rounded-2xl bg-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer group">
           <img
             src="../images/blocking.jpeg"
