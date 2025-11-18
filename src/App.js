@@ -1,22 +1,13 @@
 import React from "react";
 import "./index.css";
+import { RouterProvider } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
-import Header from "./components/Header";
-import Category from "./components/Category";
-import Product from "./components/Product";
-import Footer from "./components/Footer";
+import { router } from "./route";
 
 export default function App() {
   return (
     <AppProvider>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Category />
-          <Product />
-        </main>
-        <Footer />
-      </div>
+      <RouterProvider router={router} />
     </AppProvider>
   );
 }
